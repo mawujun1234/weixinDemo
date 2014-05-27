@@ -20,11 +20,11 @@ import net.sf.json.JSONObject;
 
 public class CommonUtil {
 	/**
-	 * access_tokenÊÇ¹«ÖÚºÅµÄÈ«¾ÖÎ¨Ò»Æ±¾İ£¬¹«ÖÚºÅµ÷ÓÃ¸÷½Ó¿ÚÊ±¶¼ĞèÊ¹ÓÃaccess_token¡£Õı³£Çé¿öÏÂaccess_tokenÓĞĞ§ÆÚÎª7200Ãë£¬ÖØ¸´»ñÈ¡½«µ¼ÖÂÉÏ´Î»ñÈ¡µÄaccess_tokenÊ§Ğ§¡£ÓÉÓÚ»ñÈ¡access_tokenµÄapiµ÷ÓÃ´ÎÊı·Ç³£ÓĞÏŞ£¬½¨Òé¿ª·¢ÕßÈ«¾Ö´æ´¢Óë¸üĞÂaccess_token£¬Æµ·±Ë¢ĞÂaccess_token»áµ¼ÖÂapiµ÷ÓÃÊÜÏŞ£¬Ó°Ïì×ÔÉíÒµÎñ¡£
+	 * access_tokenæ˜¯å…¬ä¼—å·çš„å…¨å±€å”¯ä¸€ç¥¨æ®ï¼Œå…¬ä¼—å·è°ƒç”¨å„æ¥å£æ—¶éƒ½éœ€ä½¿ç”¨access_tokenã€‚æ­£å¸¸æƒ…å†µä¸‹access_tokenæœ‰æ•ˆæœŸä¸º7200ç§’ï¼Œé‡å¤è·å–å°†å¯¼è‡´ä¸Šæ¬¡è·å–çš„access_tokenå¤±æ•ˆã€‚ç”±äºè·å–access_tokençš„apiè°ƒç”¨æ¬¡æ•°éå¸¸æœ‰é™ï¼Œå»ºè®®å¼€å‘è€…å…¨å±€å­˜å‚¨ä¸æ›´æ–°access_tokenï¼Œé¢‘ç¹åˆ·æ–°access_tokenä¼šå¯¼è‡´apiè°ƒç”¨å—é™ï¼Œå½±å“è‡ªèº«ä¸šåŠ¡ã€‚
 
-Çë¿ª·¢Õß×¢Òâ£¬ÓÉÓÚ¼¼ÊõÉı¼¶£¬¹«ÖÚÆ½Ì¨µÄ¿ª·¢½Ó¿ÚµÄaccess_token³¤¶È½«Ôö³¤£¬Æä´æ´¢ÖÁÉÙÒª±£Áô512¸ö×Ö·û¿Õ¼ä¡£´ËĞŞ¸Ä½«ÔÚ1¸öÔÂºóÉúĞ§£¬Çë¿ª·¢Õß¾¡¿ìĞŞ¸Ä¼æÈİ¡£
+è¯·å¼€å‘è€…æ³¨æ„ï¼Œç”±äºæŠ€æœ¯å‡çº§ï¼Œå…¬ä¼—å¹³å°çš„å¼€å‘æ¥å£çš„access_tokené•¿åº¦å°†å¢é•¿ï¼Œå…¶å­˜å‚¨è‡³å°‘è¦ä¿ç•™512ä¸ªå­—ç¬¦ç©ºé—´ã€‚æ­¤ä¿®æ”¹å°†åœ¨1ä¸ªæœˆåç”Ÿæ•ˆï¼Œè¯·å¼€å‘è€…å°½å¿«ä¿®æ”¹å…¼å®¹ã€‚
 
-¹«ÖÚºÅ¿ÉÒÔÊ¹ÓÃAppIDºÍAppSecretµ÷ÓÃ±¾½Ó¿ÚÀ´»ñÈ¡access_token¡£AppIDºÍAppSecret¿ÉÔÚ¿ª·¢Ä£Ê½ÖĞ»ñµÃ£¨ĞèÒªÒÑ¾­³ÉÎª¿ª·¢Õß£¬ÇÒÕÊºÅÃ»ÓĞÒì³£×´Ì¬£©¡£×¢Òâµ÷ÓÃËùÓĞÎ¢ĞÅ½Ó¿ÚÊ±¾ùĞèÊ¹ÓÃhttpsĞ­Òé¡£
+å…¬ä¼—å·å¯ä»¥ä½¿ç”¨AppIDå’ŒAppSecretè°ƒç”¨æœ¬æ¥å£æ¥è·å–access_tokenã€‚AppIDå’ŒAppSecretå¯åœ¨å¼€å‘æ¨¡å¼ä¸­è·å¾—ï¼ˆéœ€è¦å·²ç»æˆä¸ºå¼€å‘è€…ï¼Œä¸”å¸å·æ²¡æœ‰å¼‚å¸¸çŠ¶æ€ï¼‰ã€‚æ³¨æ„è°ƒç”¨æ‰€æœ‰å¾®ä¿¡æ¥å£æ—¶å‡éœ€ä½¿ç”¨httpsåè®®ã€‚
 	 * @return
 	 * @throws IOException 
 	 */
@@ -32,14 +32,14 @@ public class CommonUtil {
 //		String access_token_url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 //		URL url=new URL(access_token_url);
 //		HttpsURLConnection conn=(HttpsURLConnection)url.openConnection();
-//		//Ê¹ÓÃ×Ô¶¨ÒåµÄĞÅÈÎ¹ÜÀíÆ÷
+//		//ä½¿ç”¨è‡ªå®šä¹‰çš„ä¿¡ä»»ç®¡ç†å™¨
 //		TrustManager[] tm={new MyX509TrustManager()};
 //		SSLContext sslContext=SSLContext.getInstance("SSL","SunJSSE");
 //		sslContext.init(null, tm, new java.security.SecureRandom());
 //		SSLSocketFactory ssf=sslContext.getSocketFactory();
 //		conn.setSSLSocketFactory(ssf);
 //		conn.setDoInput(true);
-//		//ÉèÖÃÇëÇó·½Ê½
+//		//è®¾ç½®è¯·æ±‚æ–¹å¼
 //		conn.setRequestMethod("GET");
 //		InputStream inputstream=conn.getInputStream();
 //		InputStreamReader inputStreamReader=new InputStreamReader(inputstream,"UTF-8");
@@ -75,7 +75,7 @@ public class CommonUtil {
 		//String access_token_url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 		URL url=new URL(requestUrl);
 		HttpsURLConnection conn=(HttpsURLConnection)url.openConnection();
-		//Ê¹ÓÃ×Ô¶¨ÒåµÄĞÅÈÎ¹ÜÀíÆ÷
+		//ä½¿ç”¨è‡ªå®šä¹‰çš„ä¿¡ä»»ç®¡ç†å™¨
 		TrustManager[] tm={new MyX509TrustManager()};
 		SSLContext sslContext=SSLContext.getInstance("SSL","SunJSSE");
 		sslContext.init(null, tm, new java.security.SecureRandom());
@@ -84,7 +84,7 @@ public class CommonUtil {
 		conn.setDoInput(true);
 		conn.setDoOutput(true);
 		conn.setUseCaches(false);
-		//ÉèÖÃÇëÇó·½Ê½
+		//è®¾ç½®è¯·æ±‚æ–¹å¼
 		conn.setRequestMethod(requestMethod);
 		if(outpuStr!=null){
 			OutputStream outputstream=conn.getOutputStream();

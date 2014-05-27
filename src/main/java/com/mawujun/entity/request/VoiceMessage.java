@@ -1,18 +1,18 @@
 package com.mawujun.entity.request;
 
 /**
- * ¿ÉÓÃÓÚÁ½¸öµØ·½£º
- * 1:ÆÕÍ¨µÄ°´×¡Ëµ»°µÄÓïÒô£¬Ã»ÓĞRecognitionÕâ¸öÊôĞÔ
- * 2:µã+ºÅ³öÀ´µÄÓïÒô£¬Recognition¾ÍÊÇÕâ¸öÊ±ºòÓÃµÄ
+ * å¯ç”¨äºä¸¤ä¸ªåœ°æ–¹ï¼š
+ * 1:æ™®é€šçš„æŒ‰ä½è¯´è¯çš„è¯­éŸ³ï¼Œæ²¡æœ‰Recognitionè¿™ä¸ªå±æ€§
+ * 2:ç‚¹+å·å‡ºæ¥çš„è¯­éŸ³ï¼ŒRecognitionå°±æ˜¯è¿™ä¸ªæ—¶å€™ç”¨çš„
  * @author mawujun
  *
  */
 public class VoiceMessage extends BaseMessage {
-	//Ã½Ìåid
+	//åª’ä½“id
 	private String MediaId;
-	//ÓïÒô¸ñÊ½£¬Èçamr£¬speexµÈ
+	//è¯­éŸ³æ ¼å¼ï¼Œå¦‚amrï¼Œspeexç­‰
 	private String Format;
-	//ÓïÒôÊ¶±ğ½á¹û£¬UTF-8±àÂë
+	//è¯­éŸ³è¯†åˆ«ç»“æœï¼ŒUTF-8ç¼–ç 
 	private String Recognition;
 	
 	public String getMediaId() {

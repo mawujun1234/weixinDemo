@@ -1,11 +1,11 @@
 package com.mawujun.entity.response.customerService;
 
 public class Video {
-	//·¢ËÍµÄÊÓÆµµÄÃ½ÌåID
+	//å‘é€çš„è§†é¢‘çš„åª’ä½“ID
 	private String media_id;
-	//ÊÓÆµÏûÏ¢µÄ±êÌâ
+	//è§†é¢‘æ¶ˆæ¯çš„æ ‡é¢˜
 	private String title;
-	//ÊÓÆµÏûÏ¢µÄÃèÊö
+	//è§†é¢‘æ¶ˆæ¯çš„æè¿°
 	private String description;
 	public String getMedia_id() {
 		return media_id;

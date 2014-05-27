@@ -1,13 +1,13 @@
 package com.mawujun.entity.request;
 
 public class LinkMessage extends BaseMessage {
-	//ÏûÏ¢±êÌâ
+	//æ¶ˆæ¯æ ‡é¢˜
 	private String Title;
-	//ÏûÏ¢ÃèÊö
+	//æ¶ˆæ¯æè¿°
 	private String Description;
-	//ÏûÏ¢Á´½Ó
+	//æ¶ˆæ¯é“¾æ¥
 	private String Url;
-	//ÏûÏ¢id£¬64Î»ÕûĞÍ
+	//æ¶ˆæ¯idï¼Œ64ä½æ•´å‹
 	private String MsgId;
 	public String getTitle() {
 		return Title;

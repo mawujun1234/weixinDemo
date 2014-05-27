@@ -4,12 +4,12 @@ import com.mawujun.entity.request.BaseMessage;
 import com.mawujun.utils.MessageUtil;
 
 /**
- * ÒôÀÖÏûÏ¢
+ * éŸ³ä¹æ¶ˆæ¯
  * 
  */
 public class MusicMessage extends BaseMessage {
 	private String MsgType=MessageUtil.RESP_MESSAGE_TYPE_MUSIC;
-	// ÒôÀÖ
+	// éŸ³ä¹
 	private Music Music;
 
 	public Music getMusic() {

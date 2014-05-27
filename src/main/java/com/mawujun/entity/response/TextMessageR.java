@@ -4,16 +4,16 @@ import com.mawujun.entity.request.BaseMessage;
 import com.mawujun.utils.MessageUtil;
 
 /**
- * ÎÄ±¾ÏûÏ¢
+ * æ–‡æœ¬æ¶ˆæ¯
  * 
  */
 public class TextMessageR extends BaseMessage {
-	// ÏûÏ¢ÀàĞÍ£¨text/music/news£©
+	// æ¶ˆæ¯ç±»å‹ï¼ˆtext/music/newsï¼‰
 	private String MsgType=MessageUtil.RESP_MESSAGE_TYPE_TEXT;
-	// ÏûÏ¢ÄÚÈİ
+	// æ¶ˆæ¯å†…å®¹
 	private String Content;
 
-	//ÇëÇóµÄÊ±ºòµÄÏûÏ¢id
+	//è¯·æ±‚çš„æ—¶å€™çš„æ¶ˆæ¯id
 	private String MsgId;
 	
 	public String getContent() {

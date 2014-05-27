@@ -1,12 +1,12 @@
 package com.mawujun.entity.request.event;
 
 /**
- * µã»÷²Ëµ¥Ìø×ªÁ´½ÓÊ±µÄÊÂ¼şÍÆËÍ
+ * ç‚¹å‡»èœå•è·³è½¬é“¾æ¥æ—¶çš„äº‹ä»¶æ¨é€
  * @author mawujun
  *
  */
 public class VIEWEvent extends BaseEvent {
-	//ÊÂ¼şKEYÖµ£¬ÉèÖÃµÄÌø×ªURL
+	//äº‹ä»¶KEYå€¼ï¼Œè®¾ç½®çš„è·³è½¬URL
 	private String EventKey;
 
 	public String getEventKey() {

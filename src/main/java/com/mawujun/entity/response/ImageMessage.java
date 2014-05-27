@@ -3,7 +3,7 @@ package com.mawujun.entity.response;
 import com.mawujun.entity.request.BaseMessage;
 
 public class ImageMessage extends BaseMessage {
-	//Í¨¹ıÉÏ´«¶àÃ½ÌåÎÄ¼ş£¬µÃµ½µÄid¡£
+	//é€šè¿‡ä¸Šä¼ å¤šåª’ä½“æ–‡ä»¶ï¼Œå¾—åˆ°çš„idã€‚
 	private String MediaId;
 
 	public String getMediaId() {

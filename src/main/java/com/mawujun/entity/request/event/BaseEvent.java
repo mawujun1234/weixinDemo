@@ -3,16 +3,16 @@ package com.mawujun.entity.request.event;
 import com.mawujun.utils.MessageUtil;
 
 public class BaseEvent {
-	//¿ª·¢ÕßÎ¢ĞÅºÅ
+	//å¼€å‘è€…å¾®ä¿¡å·
 	private String ToUserName;
-	//·¢ËÍ·½ÕÊºÅ£¨Ò»¸öOpenID£©
+	//å‘é€æ–¹å¸å·ï¼ˆä¸€ä¸ªOpenIDï¼‰
 	private String FromUserName;
-	//ÏûÏ¢´´½¨Ê±¼ä £¨ÕûĞÍ£©
+	//æ¶ˆæ¯åˆ›å»ºæ—¶é—´ ï¼ˆæ•´å‹ï¼‰
 	private String CreateTime;
-	//ÏûÏ¢ÀàĞÍ£¬event
+	//æ¶ˆæ¯ç±»å‹ï¼Œevent
 	private String MsgType="event";
-	//ÊÂ¼şÀàĞÍ£¬subscribe(¶©ÔÄ)¡¢unsubscribe(È¡Ïû¶©ÔÄ),SCAN.LOCATION(ÉÏ±¨µØÀíÎ»ÖÃÊÂ¼ş),CLICK(µã»÷²Ëµ¥À­È¡ÏûÏ¢Ê±µÄÊÂ¼şÍÆËÍ)
-	//VIEW(µã»÷²Ëµ¥Ìø×ªÁ´½ÓÊ±µÄÊÂ¼şÍÆËÍ)
+	//äº‹ä»¶ç±»å‹ï¼Œsubscribe(è®¢é˜…)ã€unsubscribe(å–æ¶ˆè®¢é˜…),SCAN.LOCATION(ä¸ŠæŠ¥åœ°ç†ä½ç½®äº‹ä»¶),CLICK(ç‚¹å‡»èœå•æ‹‰å–æ¶ˆæ¯æ—¶çš„äº‹ä»¶æ¨é€)
+	//VIEW(ç‚¹å‡»èœå•è·³è½¬é“¾æ¥æ—¶çš„äº‹ä»¶æ¨é€)
 	private String Event;
 	
 	public boolean isSubscribe(){

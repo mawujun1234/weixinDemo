@@ -1,11 +1,11 @@
 package com.mawujun.entity.request;
 
 public class ImageMessage extends BaseMessage {
-	//Í¼Æ¬Á´½Ó
+	//å›¾ç‰‡é“¾æ¥
 	private String PicUrl;
-	//Í¼Æ¬ÏûÏ¢Ã½Ìåid£¬¿ÉÒÔµ÷ÓÃ¶àÃ½ÌåÎÄ¼şÏÂÔØ½Ó¿ÚÀ­È¡Êı¾İ¡£
+	//å›¾ç‰‡æ¶ˆæ¯åª’ä½“idï¼Œå¯ä»¥è°ƒç”¨å¤šåª’ä½“æ–‡ä»¶ä¸‹è½½æ¥å£æ‹‰å–æ•°æ®ã€‚
 	private String MediaId;
-	//ÏûÏ¢id£¬64Î»ÕûĞÍ
+	//æ¶ˆæ¯idï¼Œ64ä½æ•´å‹
 	private String MsgId;
 	public String getPicUrl() {
 		return PicUrl;

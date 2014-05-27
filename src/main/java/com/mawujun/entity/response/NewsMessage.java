@@ -6,14 +6,14 @@ import com.mawujun.entity.request.BaseMessage;
 import com.mawujun.utils.MessageUtil;
 
 /**
- * Í¼ÎÄĞÅÏ¢
+ * å›¾æ–‡ä¿¡æ¯
  * 
  */
 public class NewsMessage extends BaseMessage {
 	private String MsgType=MessageUtil.RESP_MESSAGE_TYPE_NEWS;
-	// Í¼ÎÄÏûÏ¢¸öÊı£¬ÏŞÖÆÎª10ÌõÒÔÄÚ
+	// å›¾æ–‡æ¶ˆæ¯ä¸ªæ•°ï¼Œé™åˆ¶ä¸º10æ¡ä»¥å†…
 	private int ArticleCount;
-	// ¶àÌõÍ¼ÎÄÏûÏ¢ĞÅÏ¢£¬Ä¬ÈÏµÚÒ»¸öitemÎª´óÍ¼
+	// å¤šæ¡å›¾æ–‡æ¶ˆæ¯ä¿¡æ¯ï¼Œé»˜è®¤ç¬¬ä¸€ä¸ªitemä¸ºå¤§å›¾
 	private List<Article> Articles;
 
 	public int getArticleCount() {

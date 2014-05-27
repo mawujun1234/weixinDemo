@@ -33,42 +33,42 @@ public class MenuService {
 		AccessToken token=CommonUtil.getAccessToken("wxc57f66afafe529c2", "6c30ac43688a408bd77d1ee5d4c37a43");
 		boolean bool=MenuService.createMenu(token.getAccess_token());
 		if(bool){
-			System.out.println("´´½¨²Ëµ¥³É¹¦");
+			System.out.println("åˆ›å»ºèœå•æˆåŠŸ");
 		} else {
-			System.out.println("´´½¨²Ëµ¥Ê§°Ü");
+			System.out.println("åˆ›å»ºèœå•å¤±è´¥");
 		}
 	}
 
 	private static String getMenu(){
 		ComplexButton customer=new ComplexButton();
-		customer.setName("¿Í»§");
+		customer.setName("å®¢æˆ·");
 		
 		ClickButton find_driver=new ClickButton();
 		find_driver.setKey("find_driver");
-		find_driver.setName("Ñ°Çó´ú¼İ");
+		find_driver.setName("å¯»æ±‚ä»£é©¾");
 		customer.addSub_button(find_driver);
 		
 		ViewButton provider_info=new ViewButton();
 		provider_info.setUrl("http://www.163.com");
-		provider_info.setName("²éÕÒÉÌ»§ĞÅÏ¢");
+		provider_info.setName("æŸ¥æ‰¾å•†æˆ·ä¿¡æ¯");
 		customer.addSub_button(provider_info);
 		
 		ComplexButton provider=new ComplexButton();
-		provider.setName("ÉÌ»§");
+		provider.setName("å•†æˆ·");
 		
 		ClickButton ready_driver=new ClickButton();
 		ready_driver.setKey("ready_driver");
-		ready_driver.setName("×¼±¸½ÓÊÕ´ú¼İ");
+		ready_driver.setName("å‡†å¤‡æ¥æ”¶ä»£é©¾");
 		provider.addSub_button(ready_driver);
 		
 		ViewButton provider_update_info=new ViewButton();
 		provider_update_info.setUrl("http://www.163.com");
-		provider_update_info.setName("ĞŞ¸ÄĞÅÏ¢");
+		provider_update_info.setName("ä¿®æ”¹ä¿¡æ¯");
 		provider.addSub_button(provider_update_info);
 		
 		ClickButton help=new ClickButton();
 		help.setKey("help");
-		help.setName("°ïÖú");
+		help.setName("å¸®åŠ©");
 		
 		
 //		List<AbstractButton> result=new ArrayList<AbstractButton>();
@@ -93,8 +93,8 @@ public class MenuService {
 		
 		String menuJson=getMenu();
 		
-		//ÕıÈ·Ê±µÄ·µ»ØJSONÊı¾İ°üÈçÏÂ£º{"errcode":0,"errmsg":"ok"}
-		//´íÎóÊ±µÄ·µ»ØJSONÊı¾İ°üÈçÏÂ£¨Ê¾ÀıÎªÎŞĞ§²Ëµ¥Ãû³¤¶È£©£º{"errcode":40018,"errmsg":"invalid button name size"}
+		//æ­£ç¡®æ—¶çš„è¿”å›JSONæ•°æ®åŒ…å¦‚ä¸‹ï¼š{"errcode":0,"errmsg":"ok"}
+		//é”™è¯¯æ—¶çš„è¿”å›JSONæ•°æ®åŒ…å¦‚ä¸‹ï¼ˆç¤ºä¾‹ä¸ºæ— æ•ˆèœå•åé•¿åº¦ï¼‰ï¼š{"errcode":40018,"errmsg":"invalid button name size"}
 		JSONObject json=CommonUtil.httpsRequest(menuCreateUrl, "POST",menuJson);
 		
 		if(0==json.getInt("errcode")){
@@ -107,7 +107,7 @@ public class MenuService {
 		
 //		URL url=new URL(menuCreateUrl);
 //		HttpsURLConnection conn=(HttpsURLConnection)url.openConnection();
-//		//Ê¹ÓÃ×Ô¶¨ÒåµÄĞÅÈÎ¹ÜÀíÆ÷
+//		//ä½¿ç”¨è‡ªå®šä¹‰çš„ä¿¡ä»»ç®¡ç†å™¨
 //		TrustManager[] tm={new MyX509TrustManager()};
 //		SSLContext sslContext=SSLContext.getInstance("SSL","SunJSSE");
 //		sslContext.init(null, tm, new java.security.SecureRandom());
@@ -115,10 +115,10 @@ public class MenuService {
 //		conn.setSSLSocketFactory(ssf);
 //		conn.setDoInput(true);
 //		conn.setDoOutput(true);
-//		//ÉèÖÃÇëÇó·½Ê½
+//		//è®¾ç½®è¯·æ±‚æ–¹å¼
 //		conn.setRequestMethod("POST");
 //		
-//		//ÏòÊä³öÁ÷Ğ´²Ëµ¥½á¹¹
+//		//å‘è¾“å‡ºæµå†™èœå•ç»“æ„
 //		OutputStream outputstream=conn.getOutputStream();
 //		String menuJson=getMenu();
 //		outputstream.write(menuJson.getBytes("UTF-8"));
@@ -128,7 +128,7 @@ public class MenuService {
 //		InputStreamReader inputStreamReader=new InputStreamReader(inputstream,"UTF-8");
 //		BufferedReader bufferreader=new BufferedReader(inputStreamReader);
 //		
-//		//¶ÁÈ¡ÏìÓ¦ÄÚÈİ,²Ëµ¥ÊÇ·ñ´´½¨³É¹¦
+//		//è¯»å–å“åº”å†…å®¹,èœå•æ˜¯å¦åˆ›å»ºæˆåŠŸ
 //		StringBuffer buffer=new StringBuffer();
 //		String str=null;
 //		while((str=bufferreader.readLine())!=null){
@@ -140,8 +140,8 @@ public class MenuService {
 //		inputstream.close();
 //		conn.disconnect();
 //		
-//		//ÕıÈ·Ê±µÄ·µ»ØJSONÊı¾İ°üÈçÏÂ£º{"errcode":0,"errmsg":"ok"}
-//		//´íÎóÊ±µÄ·µ»ØJSONÊı¾İ°üÈçÏÂ£¨Ê¾ÀıÎªÎŞĞ§²Ëµ¥Ãû³¤¶È£©£º{"errcode":40018,"errmsg":"invalid button name size"}
+//		//æ­£ç¡®æ—¶çš„è¿”å›JSONæ•°æ®åŒ…å¦‚ä¸‹ï¼š{"errcode":0,"errmsg":"ok"}
+//		//é”™è¯¯æ—¶çš„è¿”å›JSONæ•°æ®åŒ…å¦‚ä¸‹ï¼ˆç¤ºä¾‹ä¸ºæ— æ•ˆèœå•åé•¿åº¦ï¼‰ï¼š{"errcode":40018,"errmsg":"invalid button name size"}
 //		JSONObject json=JSONObject.fromObject(buffer.toString());
 //		
 //		if(0==json.getInt("errcode")){

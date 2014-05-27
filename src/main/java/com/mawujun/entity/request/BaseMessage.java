@@ -3,22 +3,22 @@ package com.mawujun.entity.request;
 import java.util.Date;
 
 /**
- * ÏûÏ¢»ùÀà£¨¹«ÖÚÕÊºÅ -> ÆÕÍ¨ÓÃ»§£©
+ * æ¶ˆæ¯åŸºç±»ï¼ˆå…¬ä¼—å¸å· -> æ™®é€šç”¨æˆ·ï¼‰
  * 
  * @author liufeng
  * @date 2013-05-19
  */
 public class BaseMessage {
-	// ½ÓÊÕ·½ÕÊºÅ£¨ÊÕµ½µÄOpenID£©
+	// æ¥æ”¶æ–¹å¸å·ï¼ˆæ”¶åˆ°çš„OpenIDï¼‰
 	private String ToUserName;
-	// ¿ª·¢ÕßÎ¢ĞÅºÅ
+	// å¼€å‘è€…å¾®ä¿¡å·
 	private String FromUserName;
-	// ÏûÏ¢´´½¨Ê±¼ä £¨ÕûĞÍ£©
+	// æ¶ˆæ¯åˆ›å»ºæ—¶é—´ ï¼ˆæ•´å‹ï¼‰
 	private long CreateTime;
 	
-	//ÏûÏ¢id£¬64Î»ÕûĞÍ
+	//æ¶ˆæ¯idï¼Œ64ä½æ•´å‹
 	private String MsgID;
-	// Î»0x0001±»±êÖ¾Ê±£¬ĞÇ±ê¸ÕÊÕµ½µÄÏûÏ¢
+	// ä½0x0001è¢«æ ‡å¿—æ—¶ï¼Œæ˜Ÿæ ‡åˆšæ”¶åˆ°çš„æ¶ˆæ¯
 	private int FuncFlag;
 
 	public String getToUserName() {

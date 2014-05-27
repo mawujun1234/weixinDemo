@@ -13,7 +13,7 @@ import com.mawujun.entity.response.TextMessageR;
 import com.mawujun.utils.MessageUtil;
 
 /**
- * ºËĞÄ·şÎñÀà
+ * æ ¸å¿ƒæœåŠ¡ç±»
  * 
  * @author liufeng
  * @date 2013-07-25
@@ -23,7 +23,7 @@ public class CoreService_Demo {
 	//private static Logger log = LoggerFactory.getLogger(CoreService.class);
 	
 	/**
-	 * ´¦ÀíÎ¢ĞÅ·¢À´µÄÇëÇó
+	 * å¤„ç†å¾®ä¿¡å‘æ¥çš„è¯·æ±‚
 	 * 
 	 * @param request
 	 * @return
@@ -31,49 +31,49 @@ public class CoreService_Demo {
 	public static String processRequest(HttpServletRequest request) {
 		String respMessage = null;
 		try {
-			// xmlÇëÇó½âÎö
+			// xmlè¯·æ±‚è§£æ
 			Map<String, String> requestMap = MessageUtil.parseXml(request);
 
-			// ·¢ËÍ·½ÕÊºÅ£¨open_id£©
+			// å‘é€æ–¹å¸å·ï¼ˆopen_idï¼‰
 			String fromUserName = requestMap.get("FromUserName");
-			// ¹«ÖÚÕÊºÅ
+			// å…¬ä¼—å¸å·
 			String toUserName = requestMap.get("ToUserName");
-			// ÏûÏ¢ÀàĞÍ
+			// æ¶ˆæ¯ç±»å‹
 			String msgType = requestMap.get("MsgType");
 
-			// Ä¬ÈÏ»Ø¸´´ËÎÄ±¾ÏûÏ¢
+			// é»˜è®¤å›å¤æ­¤æ–‡æœ¬æ¶ˆæ¯
 			TextMessageR textMessage = new TextMessageR();
 			textMessage.setToUserName(fromUserName);
 			textMessage.setFromUserName(toUserName);
 			textMessage.setCreateTime(new Date().getTime());
 			//textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
 			textMessage.setFuncFlag(0);
-			// ÓÉÓÚhrefÊôĞÔÖµ±ØĞëÓÃË«ÒıºÅÒıÆğ£¬ÕâÓë×Ö·û´®±¾ÉíµÄË«ÒıºÅ³åÍ»£¬ËùÒÔÒª×ªÒå			
+			// ç”±äºhrefå±æ€§å€¼å¿…é¡»ç”¨åŒå¼•å·å¼•èµ·ï¼Œè¿™ä¸å­—ç¬¦ä¸²æœ¬èº«çš„åŒå¼•å·å†²çªï¼Œæ‰€ä»¥è¦è½¬ä¹‰			
 			StringBuffer contentMsg = new StringBuffer();  
-			contentMsg.append("»¶Ó­·ÃÎÊ<a href=\"http://chatcourse.duapp.com\">¸öÈËÖ÷Ò³</a>").append("\n");  
-			contentMsg.append("ÄúºÃ£¬ÎÒÊÇ»úÆ÷ÈËĞ¡Q£¬Çë»Ø¸´Êı×ÖÑ¡Ôñ·şÎñ£º").append("\n\n");  
-			contentMsg.append("1  ÌìÆøÔ¤±¨").append("\n");  
-			contentMsg.append("2  ¹«½»²éÑ¯").append("\n");  
-			contentMsg.append("3  ÖÜ±ßËÑË÷").append("\n");  
-			contentMsg.append("4  ¸èÇúµã²¥").append("\n");  
-			contentMsg.append("5  ¾­µäÓÎÏ·").append("\n");  
-			contentMsg.append("6  ÃÀÅ®µçÌ¨").append("\n");  
-			contentMsg.append("7  ÈËÁ³Ê¶±ğ").append("\n"); 
-			contentMsg.append("8  ÁÄÌìßëà¾").append("\n");
-			contentMsg.append("9  µçÓ°ÅÅĞĞ°ñ").append("\n");
-			contentMsg.append("10 QÓÑÈ¦").append("\n\n");  
-			contentMsg.append("µã»÷²é¿´ <a href=\"http://chatcourse.duapp.com\">°ïÖúÊÖ²á</a>");  
+			contentMsg.append("æ¬¢è¿è®¿é—®<a href=\"http://chatcourse.duapp.com\">ä¸ªäººä¸»é¡µ</a>").append("\n");  
+			contentMsg.append("æ‚¨å¥½ï¼Œæˆ‘æ˜¯æœºå™¨äººå°Qï¼Œè¯·å›å¤æ•°å­—é€‰æ‹©æœåŠ¡ï¼š").append("\n\n");  
+			contentMsg.append("1  å¤©æ°”é¢„æŠ¥").append("\n");  
+			contentMsg.append("2  å…¬äº¤æŸ¥è¯¢").append("\n");  
+			contentMsg.append("3  å‘¨è¾¹æœç´¢").append("\n");  
+			contentMsg.append("4  æ­Œæ›²ç‚¹æ’­").append("\n");  
+			contentMsg.append("5  ç»å…¸æ¸¸æˆ").append("\n");  
+			contentMsg.append("6  ç¾å¥³ç”µå°").append("\n");  
+			contentMsg.append("7  äººè„¸è¯†åˆ«").append("\n"); 
+			contentMsg.append("8  èŠå¤©å” å—‘").append("\n");
+			contentMsg.append("9  ç”µå½±æ’è¡Œæ¦œ").append("\n");
+			contentMsg.append("10 Qå‹åœˆ").append("\n\n");  
+			contentMsg.append("ç‚¹å‡»æŸ¥çœ‹ <a href=\"http://chatcourse.duapp.com\">å¸®åŠ©æ‰‹å†Œ</a>");  
 
 			textMessage.setContent(contentMsg.toString());
-			// ½«ÎÄ±¾ÏûÏ¢¶ÔÏó×ª»»³Éxml×Ö·û´®
+			// å°†æ–‡æœ¬æ¶ˆæ¯å¯¹è±¡è½¬æ¢æˆxmlå­—ç¬¦ä¸²
 			respMessage = MessageUtil.messageToXml(textMessage);
 
-			// ÎÄ±¾ÏûÏ¢
+			// æ–‡æœ¬æ¶ˆæ¯
 			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
-				// ½ÓÊÕÓÃ»§·¢ËÍµÄÎÄ±¾ÏûÏ¢ÄÚÈİ
+				// æ¥æ”¶ç”¨æˆ·å‘é€çš„æ–‡æœ¬æ¶ˆæ¯å†…å®¹
 				String content = requestMap.get("Content");
 
-				// ´´½¨Í¼ÎÄÏûÏ¢
+				// åˆ›å»ºå›¾æ–‡æ¶ˆæ¯
 				NewsMessage newsMessage = new NewsMessage();
 				newsMessage.setToUserName(fromUserName);
 				newsMessage.setFromUserName(toUserName);
@@ -82,29 +82,29 @@ public class CoreService_Demo {
 				newsMessage.setFuncFlag(0);
 
 				List<Article> articleList = new ArrayList<Article>();
-				// µ¥Í¼ÎÄÏûÏ¢
+				// å•å›¾æ–‡æ¶ˆæ¯
 				if ("1".equals(content)) {
 					Article article = new Article();
-					article.setTitle("Î¢ĞÅ¹«ÖÚÕÊºÅ¿ª·¢½Ì³ÌJava°æ");
-					article.setDescription("·½±ãPICCĞÅÏ¢¼¼ÊõÈËÔ±ÒÔ¼°¹«Ë¾ÆäËûÓÃ»§½»Á÷ÔËÎ¬¾­Ñé¡¢Ìá¹©ÔËÎ¬¼¼ÊõÖ§³Ö¡¢Ìá¸ßÔËÎ¬·şÎñÏàÓ¦ËÙ¶ÈºÍ·şÎñÖÊÁ¿¡£");
+					article.setTitle("å¾®ä¿¡å…¬ä¼—å¸å·å¼€å‘æ•™ç¨‹Javaç‰ˆ");
+					article.setDescription("æ–¹ä¾¿PICCä¿¡æ¯æŠ€æœ¯äººå‘˜ä»¥åŠå…¬å¸å…¶ä»–ç”¨æˆ·äº¤æµè¿ç»´ç»éªŒã€æä¾›è¿ç»´æŠ€æœ¯æ”¯æŒã€æé«˜è¿ç»´æœåŠ¡ç›¸åº”é€Ÿåº¦å’ŒæœåŠ¡è´¨é‡ã€‚");
 					article.setPicUrl("http://0.xiaoqrobot.duapp.com/images/avatar_liufeng.jpg");
 					article.setUrl("http://blog.csdn.net/lyq8479");
 					articleList.add(article);
-					// ÉèÖÃÍ¼ÎÄÏûÏ¢¸öÊı
+					// è®¾ç½®å›¾æ–‡æ¶ˆæ¯ä¸ªæ•°
 					newsMessage.setArticleCount(articleList.size());
-					// ÉèÖÃÍ¼ÎÄÏûÏ¢°üº¬µÄÍ¼ÎÄ¼¯ºÏ
+					// è®¾ç½®å›¾æ–‡æ¶ˆæ¯åŒ…å«çš„å›¾æ–‡é›†åˆ
 					newsMessage.setArticles(articleList);
-					// ½«Í¼ÎÄÏûÏ¢¶ÔÏó×ª»»³Éxml×Ö·û´®
+					// å°†å›¾æ–‡æ¶ˆæ¯å¯¹è±¡è½¬æ¢æˆxmlå­—ç¬¦ä¸²
 					respMessage = MessageUtil.newsMessageToXml(newsMessage);
 				}
-				// µ¥Í¼ÎÄÏûÏ¢---²»º¬Í¼Æ¬
+				// å•å›¾æ–‡æ¶ˆæ¯---ä¸å«å›¾ç‰‡
 				else if ("2".equals(content)) {
 					Article article = new Article();
-					article.setTitle("Î¢ĞÅ¹«ÖÚÕÊºÅ¿ª·¢½Ì³ÌJava°æ");
-					// Í¼ÎÄÏûÏ¢ÖĞ¿ÉÒÔÊ¹ÓÃQQ±íÇé¡¢·ûºÅ±íÇé
-					article.setDescription("Áø·å£¬80ºó£¬" + emoji(0x1F6B9)
-							+ "£¬Î¢ĞÅ¹«ÖÚÕÊºÅ¿ª·¢¾­Ñé4¸öÔÂ¡£Îª°ïÖú³õÑ§ÕßÈëÃÅ£¬ÌØÍÆ³ö´ËÏµÁĞÁ¬ÔØ½Ì³Ì£¬Ò²Ï£Íû½è´Ë»ú»áÈÏÊ¶¸ü¶àÍ¬ĞĞ£¡\n\nÄ¿Ç°ÒÑÍÆ³ö½Ì³Ì¹²12Æª£¬°üÀ¨½Ó¿ÚÅäÖÃ¡¢ÏûÏ¢·â×°¡¢¿ò¼Ü´î½¨¡¢QQ±íÇé·¢ËÍ¡¢·ûºÅ±íÇé·¢ËÍµÈ¡£\n\nºóÆÚ»¹¼Æ»®ÍÆ³öÒ»Ğ©ÊµÓÃ¹¦ÄÜµÄ¿ª·¢½²½â£¬ÀıÈç£ºÌìÆøÔ¤±¨¡¢ÖÜ±ßËÑË÷¡¢ÁÄÌì¹¦ÄÜµÈ¡£");
-					// ½«Í¼Æ¬ÖÃÎª¿Õ
+					article.setTitle("å¾®ä¿¡å…¬ä¼—å¸å·å¼€å‘æ•™ç¨‹Javaç‰ˆ");
+					// å›¾æ–‡æ¶ˆæ¯ä¸­å¯ä»¥ä½¿ç”¨QQè¡¨æƒ…ã€ç¬¦å·è¡¨æƒ…
+					article.setDescription("æŸ³å³°ï¼Œ80åï¼Œ" + emoji(0x1F6B9)
+							+ "ï¼Œå¾®ä¿¡å…¬ä¼—å¸å·å¼€å‘ç»éªŒ4ä¸ªæœˆã€‚ä¸ºå¸®åŠ©åˆå­¦è€…å…¥é—¨ï¼Œç‰¹æ¨å‡ºæ­¤ç³»åˆ—è¿è½½æ•™ç¨‹ï¼Œä¹Ÿå¸Œæœ›å€Ÿæ­¤æœºä¼šè®¤è¯†æ›´å¤šåŒè¡Œï¼\n\nç›®å‰å·²æ¨å‡ºæ•™ç¨‹å…±12ç¯‡ï¼ŒåŒ…æ‹¬æ¥å£é…ç½®ã€æ¶ˆæ¯å°è£…ã€æ¡†æ¶æ­å»ºã€QQè¡¨æƒ…å‘é€ã€ç¬¦å·è¡¨æƒ…å‘é€ç­‰ã€‚\n\nåæœŸè¿˜è®¡åˆ’æ¨å‡ºä¸€äº›å®ç”¨åŠŸèƒ½çš„å¼€å‘è®²è§£ï¼Œä¾‹å¦‚ï¼šå¤©æ°”é¢„æŠ¥ã€å‘¨è¾¹æœç´¢ã€èŠå¤©åŠŸèƒ½ç­‰ã€‚");
+					// å°†å›¾ç‰‡ç½®ä¸ºç©º
 					article.setPicUrl("");
 					article.setUrl("http://blog.csdn.net/lyq8479");
 					articleList.add(article);
@@ -112,22 +112,22 @@ public class CoreService_Demo {
 					newsMessage.setArticles(articleList);
 					respMessage = MessageUtil.newsMessageToXml(newsMessage);
 				}
-				// ¶àÍ¼ÎÄÏûÏ¢
+				// å¤šå›¾æ–‡æ¶ˆæ¯
 				else if ("3".equals(content)) {
 					Article article1 = new Article();
-					article1.setTitle("Î¢ĞÅ¹«ÖÚÕÊºÅ¿ª·¢½Ì³Ì\nÒıÑÔ");
+					article1.setTitle("å¾®ä¿¡å…¬ä¼—å¸å·å¼€å‘æ•™ç¨‹\nå¼•è¨€");
 					article1.setDescription("");
 					article1.setPicUrl("http://0.xiaoqrobot.duapp.com/images/avatar_liufeng.jpg");
 					article1.setUrl("http://blog.csdn.net/lyq8479/article/details/8937622");
 
 					Article article2 = new Article();
-					article2.setTitle("µÚ2Æª\nÎ¢ĞÅ¹«ÖÚÕÊºÅµÄÀàĞÍ");
+					article2.setTitle("ç¬¬2ç¯‡\nå¾®ä¿¡å…¬ä¼—å¸å·çš„ç±»å‹");
 					article2.setDescription("");
 					article2.setPicUrl("http://avatar.csdn.net/1/4/A/1_lyq8479.jpg");
 					article2.setUrl("http://blog.csdn.net/lyq8479/article/details/8941577");
 
 					Article article3 = new Article();
-					article3.setTitle("µÚ3Æª\n¿ª·¢Ä£Ê½ÆôÓÃ¼°½Ó¿ÚÅäÖÃ");
+					article3.setTitle("ç¬¬3ç¯‡\nå¼€å‘æ¨¡å¼å¯ç”¨åŠæ¥å£é…ç½®");
 					article3.setDescription("");
 					article3.setPicUrl("http://avatar.csdn.net/1/4/A/1_lyq8479.jpg");
 					article3.setUrl("http://blog.csdn.net/lyq8479/article/details/8944988");
@@ -139,29 +139,29 @@ public class CoreService_Demo {
 					newsMessage.setArticles(articleList);
 					respMessage = MessageUtil.newsMessageToXml(newsMessage);
 				}
-				// ¶àÍ¼ÎÄÏûÏ¢---Ê×ÌõÏûÏ¢²»º¬Í¼Æ¬
+				// å¤šå›¾æ–‡æ¶ˆæ¯---é¦–æ¡æ¶ˆæ¯ä¸å«å›¾ç‰‡
 				else if ("4".equals(content)) {
 					Article article1 = new Article();
-					article1.setTitle("Î¢ĞÅ¹«ÖÚÕÊºÅ¿ª·¢½Ì³ÌJava°æ");
+					article1.setTitle("å¾®ä¿¡å…¬ä¼—å¸å·å¼€å‘æ•™ç¨‹Javaç‰ˆ");
 					article1.setDescription("");
-					// ½«Í¼Æ¬ÖÃÎª¿Õ
+					// å°†å›¾ç‰‡ç½®ä¸ºç©º
 					article1.setPicUrl("");
 					article1.setUrl("http://blog.csdn.net/lyq8479");
 
 					Article article2 = new Article();
-					article2.setTitle("µÚ4Æª\nÏûÏ¢¼°ÏûÏ¢´¦Àí¹¤¾ßµÄ·â×°");
+					article2.setTitle("ç¬¬4ç¯‡\næ¶ˆæ¯åŠæ¶ˆæ¯å¤„ç†å·¥å…·çš„å°è£…");
 					article2.setDescription("");
 					article2.setPicUrl("http://avatar.csdn.net/1/4/A/1_lyq8479.jpg");
 					article2.setUrl("http://blog.csdn.net/lyq8479/article/details/8949088");
 
 					Article article3 = new Article();
-					article3.setTitle("µÚ5Æª\n¸÷ÖÖÏûÏ¢µÄ½ÓÊÕÓëÏìÓ¦");
+					article3.setTitle("ç¬¬5ç¯‡\nå„ç§æ¶ˆæ¯çš„æ¥æ”¶ä¸å“åº”");
 					article3.setDescription("");
 					article3.setPicUrl("http://avatar.csdn.net/1/4/A/1_lyq8479.jpg");
 					article3.setUrl("http://blog.csdn.net/lyq8479/article/details/8952173");
 
 					Article article4 = new Article();
-					article4.setTitle("µÚ6Æª\nÎÄ±¾ÏûÏ¢µÄÄÚÈİ³¤¶ÈÏŞÖÆ½ÒÃØ");
+					article4.setTitle("ç¬¬6ç¯‡\næ–‡æœ¬æ¶ˆæ¯çš„å†…å®¹é•¿åº¦é™åˆ¶æ­ç§˜");
 					article4.setDescription("");
 					article4.setPicUrl("http://avatar.csdn.net/1/4/A/1_lyq8479.jpg");
 					article4.setUrl("http://blog.csdn.net/lyq8479/article/details/8967824");
@@ -174,24 +174,24 @@ public class CoreService_Demo {
 					newsMessage.setArticles(articleList);
 					respMessage = MessageUtil.newsMessageToXml(newsMessage);
 				}
-				// ¶àÍ¼ÎÄÏûÏ¢---×îºóÒ»ÌõÏûÏ¢²»º¬Í¼Æ¬
+				// å¤šå›¾æ–‡æ¶ˆæ¯---æœ€åä¸€æ¡æ¶ˆæ¯ä¸å«å›¾ç‰‡
 				else if ("5".equals(content)) {
 					Article article1 = new Article();
-					article1.setTitle("µÚ7Æª\nÎÄ±¾ÏûÏ¢ÖĞ»»ĞĞ·ûµÄÊ¹ÓÃ");
+					article1.setTitle("ç¬¬7ç¯‡\næ–‡æœ¬æ¶ˆæ¯ä¸­æ¢è¡Œç¬¦çš„ä½¿ç”¨");
 					article1.setDescription("");
 					article1.setPicUrl("http://0.xiaoqrobot.duapp.com/images/avatar_liufeng.jpg");
 					article1.setUrl("http://blog.csdn.net/lyq8479/article/details/9141467");
 
 					Article article2 = new Article();
-					article2.setTitle("µÚ8Æª\nÎÄ±¾ÏûÏ¢ÖĞÊ¹ÓÃÍøÒ³³¬Á´½Ó");
+					article2.setTitle("ç¬¬8ç¯‡\næ–‡æœ¬æ¶ˆæ¯ä¸­ä½¿ç”¨ç½‘é¡µè¶…é“¾æ¥");
 					article2.setDescription("");
 					article2.setPicUrl("http://avatar.csdn.net/1/4/A/1_lyq8479.jpg");
 					article2.setUrl("http://blog.csdn.net/lyq8479/article/details/9157455");
 
 					Article article3 = new Article();
-					article3.setTitle("Èç¹û¾õµÃÎÄÕÂ¶ÔÄãÓĞËù°ïÖú£¬ÇëÍ¨¹ı²©¿ÍÁôÑÔ»ò¹Ø×¢Î¢ĞÅ¹«ÖÚÕÊºÅxiaoqrobotÀ´Ö§³ÖÁø·å£¡");
+					article3.setTitle("å¦‚æœè§‰å¾—æ–‡ç« å¯¹ä½ æœ‰æ‰€å¸®åŠ©ï¼Œè¯·é€šè¿‡åšå®¢ç•™è¨€æˆ–å…³æ³¨å¾®ä¿¡å…¬ä¼—å¸å·xiaoqrobotæ¥æ”¯æŒæŸ³å³°ï¼");
 					article3.setDescription("");
-					// ½«Í¼Æ¬ÖÃÎª¿Õ
+					// å°†å›¾ç‰‡ç½®ä¸ºç©º
 					article3.setPicUrl("");
 					article3.setUrl("http://blog.csdn.net/lyq8479");
 
@@ -210,7 +210,7 @@ public class CoreService_Demo {
 	}
 
 	/**
-	 * emoji±íÇé×ª»»(hex -> utf-16)
+	 * emojiè¡¨æƒ…è½¬æ¢(hex -> utf-16)
 	 * 
 	 * @param hexEmoji
 	 * @return

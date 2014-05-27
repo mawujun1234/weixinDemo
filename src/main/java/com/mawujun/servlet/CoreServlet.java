@@ -12,7 +12,7 @@ import com.mawujun.service.CoreService;
 import com.mawujun.utils.SignUtil;
 
 /**
- * ºËĞÄÇëÇó´¦ÀíÀà
+ * æ ¸å¿ƒè¯·æ±‚å¤„ç†ç±»
  * 
  * @author liufeng
  * @date 2013-05-18
@@ -21,20 +21,20 @@ public class CoreServlet extends HttpServlet {
 	private static final long serialVersionUID = 4440739483644821986L;
 
 	/**
-	 * È·ÈÏÇëÇóÀ´×ÔÎ¢ĞÅ·şÎñÆ÷
+	 * ç¡®è®¤è¯·æ±‚æ¥è‡ªå¾®ä¿¡æœåŠ¡å™¨
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Î¢ĞÅ¼ÓÃÜÇ©Ãû
+		// å¾®ä¿¡åŠ å¯†ç­¾å
 		String signature = request.getParameter("signature");
-		// Ê±¼ä´Á
+		// æ—¶é—´æˆ³
 		String timestamp = request.getParameter("timestamp");
-		// Ëæ»úÊı
+		// éšæœºæ•°
 		String nonce = request.getParameter("nonce");
-		// Ëæ»ú×Ö·û´®
+		// éšæœºå­—ç¬¦ä¸²
 		String echostr = request.getParameter("echostr");
 
 		PrintWriter out = response.getWriter();
-		// Í¨¹ı¼ìÑésignature¶ÔÇëÇó½øĞĞĞ£Ñé£¬ÈôĞ£Ñé³É¹¦ÔòÔ­Ñù·µ»Øechostr£¬±íÊ¾½ÓÈë³É¹¦£¬·ñÔò½ÓÈëÊ§°Ü
+		// é€šè¿‡æ£€éªŒsignatureå¯¹è¯·æ±‚è¿›è¡Œæ ¡éªŒï¼Œè‹¥æ ¡éªŒæˆåŠŸåˆ™åŸæ ·è¿”å›echostrï¼Œè¡¨ç¤ºæ¥å…¥æˆåŠŸï¼Œå¦åˆ™æ¥å…¥å¤±è´¥
 		if (SignUtil.checkSignature(signature, timestamp, nonce)) {
 			out.print(echostr);
 		}
@@ -43,24 +43,24 @@ public class CoreServlet extends HttpServlet {
 	}
 
 	/**
-	 * ´¦ÀíÎ¢ĞÅ·şÎñÆ÷·¢À´µÄÏûÏ¢
+	 * å¤„ç†å¾®ä¿¡æœåŠ¡å™¨å‘æ¥çš„æ¶ˆæ¯
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ÏìÓ¦ÏûÏ¢
+		// å“åº”æ¶ˆæ¯
 		PrintWriter out = response.getWriter();
 				
-		// ½«ÇëÇó¡¢ÏìÓ¦µÄ±àÂë¾ùÉèÖÃÎªUTF-8£¨·ÀÖ¹ÖĞÎÄÂÒÂë£©
+		// å°†è¯·æ±‚ã€å“åº”çš„ç¼–ç å‡è®¾ç½®ä¸ºUTF-8ï¼ˆé˜²æ­¢ä¸­æ–‡ä¹±ç ï¼‰
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		// Î¢ĞÅ¼ÓÃÜÇ©Ãû
+		// å¾®ä¿¡åŠ å¯†ç­¾å
 		String signature = request.getParameter("signature");
-		// Ê±¼ä´Á
+		// æ—¶é—´æˆ³
 		String timestamp = request.getParameter("timestamp");
-		// Ëæ»úÊı
+		// éšæœºæ•°
 		String nonce = request.getParameter("nonce");
-		// Í¨¹ı¼ìÑésignature¶ÔÇëÇó½øĞĞĞ£Ñé£¬ÈôĞ£Ñé³É¹¦ÔòÔ­Ñù·µ»Øechostr£¬±íÊ¾½ÓÈë³É¹¦£¬·ñÔò½ÓÈëÊ§°Ü
+		// é€šè¿‡æ£€éªŒsignatureå¯¹è¯·æ±‚è¿›è¡Œæ ¡éªŒï¼Œè‹¥æ ¡éªŒæˆåŠŸåˆ™åŸæ ·è¿”å›echostrï¼Œè¡¨ç¤ºæ¥å…¥æˆåŠŸï¼Œå¦åˆ™æ¥å…¥å¤±è´¥
 		if (SignUtil.checkSignature(signature, timestamp, nonce)) {
-			// µ÷ÓÃºËĞÄÒµÎñÀà½ÓÊÕÏûÏ¢¡¢´¦ÀíÏûÏ¢
+			// è°ƒç”¨æ ¸å¿ƒä¸šåŠ¡ç±»æ¥æ”¶æ¶ˆæ¯ã€å¤„ç†æ¶ˆæ¯
 			String respMessage = CoreService.processRequest(request);
 			
 			

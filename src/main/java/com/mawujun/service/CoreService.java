@@ -16,7 +16,7 @@ import com.mawujun.entity.response.Voice;
 import com.mawujun.utils.MessageUtil;
 
 /**
- * ºËĞÄ·şÎñÀà
+ * æ ¸å¿ƒæœåŠ¡ç±»
  * 
  * @author liufeng
  * @date 2013-07-25
@@ -26,7 +26,7 @@ public class CoreService {
 	//private static Logger log = LoggerFactory.getLogger(CoreService.class);
 	
 	/**
-	 * ´¦ÀíÎ¢ĞÅ·¢À´µÄÇëÇó
+	 * å¤„ç†å¾®ä¿¡å‘æ¥çš„è¯·æ±‚
 	 * 
 	 * @param request
 	 * @return
@@ -34,19 +34,19 @@ public class CoreService {
 	public static String processRequest(HttpServletRequest request) {
 		String respMessage = null;
 		try {
-			// xmlÇëÇó½âÎö
+			// xmlè¯·æ±‚è§£æ
 			Map<String, String> requestMap = MessageUtil.parseXml(request);
 
-			// ·¢ËÍ·½ÕÊºÅ£¨open_id£©
+			// å‘é€æ–¹å¸å·ï¼ˆopen_idï¼‰
 			String fromUserName = requestMap.get("FromUserName");
-			// ¹«ÖÚÕÊºÅ
+			// å…¬ä¼—å¸å·
 			String toUserName = requestMap.get("ToUserName");
-			// ÏûÏ¢ÀàĞÍ
+			// æ¶ˆæ¯ç±»å‹
 			String msgType = requestMap.get("MsgType");
 
 			
 
-			// ÎÄ±¾ÏûÏ¢
+			// æ–‡æœ¬æ¶ˆæ¯
 			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
 //				
 			} else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)) {
@@ -64,14 +64,14 @@ public class CoreService {
 					String longitude=requestMap.get("Location_Y");
 					String Label=requestMap.get("Label");
 					
-					// Ä¬ÈÏ»Ø¸´´ËÎÄ±¾ÏûÏ¢
+					// é»˜è®¤å›å¤æ­¤æ–‡æœ¬æ¶ˆæ¯
 					TextMessageR textMessage = new TextMessageR();
 					textMessage.setToUserName(fromUserName);
 					textMessage.setFromUserName(toUserName);
 					textMessage.setCreateTime(new Date().getTime());
 					textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
 					textMessage.setFuncFlag(0);
-					textMessage.setContent("ÄãËùÔÚµÄÎ»ÖÃÊÇ:"+Label+":"+latitude+":"+longitude);
+					textMessage.setContent("ä½ æ‰€åœ¨çš„ä½ç½®æ˜¯:"+Label+":"+latitude+":"+longitude);
 					
 					respMessage = MessageUtil.messageToXml(textMessage);
 				//}
@@ -80,35 +80,35 @@ public class CoreService {
 				String longitude=requestMap.get("Longitude");
 				String precision=requestMap.get("Precision");
 				
-				// Ä¬ÈÏ»Ø¸´´ËÎÄ±¾ÏûÏ¢
+				// é»˜è®¤å›å¤æ­¤æ–‡æœ¬æ¶ˆæ¯
 				TextMessageR textMessage = new TextMessageR();
 				textMessage.setToUserName(fromUserName);
 				textMessage.setFromUserName(toUserName);
 				textMessage.setCreateTime(new Date().getTime());
 				textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
 				textMessage.setFuncFlag(0);
-				textMessage.setContent("ÄãËùÔÚµÄÎ»ÖÃÊÇ:"+latitude+":"+longitude);
+				textMessage.setContent("ä½ æ‰€åœ¨çš„ä½ç½®æ˜¯:"+latitude+":"+longitude);
 				
 				respMessage = MessageUtil.messageToXml(textMessage);
 			} else {
-				// Ä¬ÈÏ»Ø¸´´ËÎÄ±¾ÏûÏ¢
+				// é»˜è®¤å›å¤æ­¤æ–‡æœ¬æ¶ˆæ¯
 				TextMessageR textMessage = new TextMessageR();
 				textMessage.setToUserName(fromUserName);
 				textMessage.setFromUserName(toUserName);
 				textMessage.setCreateTime(new Date().getTime());
 				textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
 				textMessage.setFuncFlag(0);
-				// ÓÉÓÚhrefÊôĞÔÖµ±ØĞëÓÃË«ÒıºÅÒıÆğ£¬ÕâÓë×Ö·û´®±¾ÉíµÄË«ÒıºÅ³åÍ»£¬ËùÒÔÒª×ªÒå			
+				// ç”±äºhrefå±æ€§å€¼å¿…é¡»ç”¨åŒå¼•å·å¼•èµ·ï¼Œè¿™ä¸å­—ç¬¦ä¸²æœ¬èº«çš„åŒå¼•å·å†²çªï¼Œæ‰€ä»¥è¦è½¬ä¹‰			
 				StringBuffer contentMsg = new StringBuffer();  
-				contentMsg.append("»¶Ó­·ÃÎÊ<a href=\"http://chatcourse.duapp.com\">¸öÈËÖ÷Ò³</a>").append("\n");  
-				contentMsg.append("ÄúºÃ£¬ÎÒÊÇ»úÆ÷ÈËĞ¡Q£¬Çë»Ø¸´Êı×ÖÑ¡Ôñ·şÎñ£º").append("\n\n");  
-				contentMsg.append("1  ´ú¼İ").append("\n");  
-				contentMsg.append("2  ÉÌ»§ĞÅÏ¢²éÑ¯").append("\n");  
-				contentMsg.append("3  ÉÌ»§µÇÂ¼").append("\n");  
-				contentMsg.append("4  ´ú¼İµÇÂ¼").append("\n");  
+				contentMsg.append("æ¬¢è¿è®¿é—®<a href=\"http://chatcourse.duapp.com\">ä¸ªäººä¸»é¡µ</a>").append("\n");  
+				contentMsg.append("æ‚¨å¥½ï¼Œæˆ‘æ˜¯æœºå™¨äººå°Qï¼Œè¯·å›å¤æ•°å­—é€‰æ‹©æœåŠ¡ï¼š").append("\n\n");  
+				contentMsg.append("1  ä»£é©¾").append("\n");  
+				contentMsg.append("2  å•†æˆ·ä¿¡æ¯æŸ¥è¯¢").append("\n");  
+				contentMsg.append("3  å•†æˆ·ç™»å½•").append("\n");  
+				contentMsg.append("4  ä»£é©¾ç™»å½•").append("\n");  
 
 				textMessage.setContent(contentMsg.toString());
-				// ½«ÎÄ±¾ÏûÏ¢¶ÔÏó×ª»»³Éxml×Ö·û´®
+				// å°†æ–‡æœ¬æ¶ˆæ¯å¯¹è±¡è½¬æ¢æˆxmlå­—ç¬¦ä¸²
 				respMessage = MessageUtil.messageToXml(textMessage);
 			}
 		} catch (Exception e) {
@@ -118,7 +118,7 @@ public class CoreService {
 	}
 
 	/**
-	 * emoji±íÇé×ª»»(hex -> utf-16)
+	 * emojiè¡¨æƒ…è½¬æ¢(hex -> utf-16)
 	 * 
 	 * @param hexEmoji
 	 * @return

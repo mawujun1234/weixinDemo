@@ -1,14 +1,14 @@
 package com.mawujun.entity.request.event;
 
 /**
- * ¶©ÔÄºÍÈ¡Ïû¶©ÔÄµÄÊÂ¼ş
+ * è®¢é˜…å’Œå–æ¶ˆè®¢é˜…çš„äº‹ä»¶
  * @author mawujun
  *
  */
 public class SCANEvent extends BaseEvent{
-	//ÊÂ¼şKEYÖµ£¬ÊÇÒ»¸ö32Î»ÎŞ·ûºÅÕûÊı£¬¼´´´½¨¶şÎ¬ÂëÊ±µÄ¶şÎ¬Âëscene_id
+	//äº‹ä»¶KEYå€¼ï¼Œæ˜¯ä¸€ä¸ª32ä½æ— ç¬¦å·æ•´æ•°ï¼Œå³åˆ›å»ºäºŒç»´ç æ—¶çš„äºŒç»´ç scene_id
 	private String EventKey;
-	//¶şÎ¬ÂëµÄticket£¬¿ÉÓÃÀ´»»È¡¶şÎ¬ÂëÍ¼Æ¬
+	//äºŒç»´ç çš„ticketï¼Œå¯ç”¨æ¥æ¢å–äºŒç»´ç å›¾ç‰‡
 	private String Ticket;
 	public String getEventKey() {
 		return EventKey;

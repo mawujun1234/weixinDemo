@@ -1,17 +1,17 @@
 package com.mawujun.entity.response;
 
 /**
- * 图文model
+ * 鍥炬枃model
  * 
  */
 public class Article {
-	// 图文消息名称
+	// 鍥炬枃娑堟伅鍚嶇О
 	private String Title;
-	// 图文消息描述
+	// 鍥炬枃娑堟伅鎻忚堪
 	private String Description;
-	// 图片链接，支持JPG、PNG格式，较好的效果为大�?40*320，小�?0*80，限制图片链接的域名�?��与开发�?填写的基本资料中的Url�?��
+	// 鍥剧墖閾炬帴锛屾敮鎸丣PG銆丳NG鏍煎紡锛岃緝濂界殑鏁堟灉涓哄ぇ锟�40*320锛屽皬锟�0*80锛岄檺鍒跺浘鐗囬摼鎺ョ殑鍩熷悕锟�锟斤拷涓庡紑鍙戯拷?濉啓鐨勫熀鏈祫鏂欎腑鐨刄rl锟�锟斤拷
 	private String PicUrl;
-	// 点击图文消息跳转链接
+	// 鐐瑰嚮鍥炬枃娑堟伅璺宠浆閾炬帴
 	private String Url;
 
 	public String getTitle() {

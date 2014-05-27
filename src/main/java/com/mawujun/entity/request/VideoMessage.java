@@ -2,11 +2,11 @@ package com.mawujun.entity.request;
 
 public class VideoMessage extends BaseMessage {
 
-	//ÊÓÆµÏûÏ¢Ã½Ìåid£¬¿ÉÒÔµ÷ÓÃ¶àÃ½ÌåÎÄ¼şÏÂÔØ½Ó¿ÚÀ­È¡Êı¾İ¡£
+	//è§†é¢‘æ¶ˆæ¯åª’ä½“idï¼Œå¯ä»¥è°ƒç”¨å¤šåª’ä½“æ–‡ä»¶ä¸‹è½½æ¥å£æ‹‰å–æ•°æ®ã€‚
 	private String MediaId;
-	//ÊÓÆµÏûÏ¢ËõÂÔÍ¼µÄÃ½Ìåid£¬¿ÉÒÔµ÷ÓÃ¶àÃ½ÌåÎÄ¼şÏÂÔØ½Ó¿ÚÀ­È¡Êı¾İ¡£
+	//è§†é¢‘æ¶ˆæ¯ç¼©ç•¥å›¾çš„åª’ä½“idï¼Œå¯ä»¥è°ƒç”¨å¤šåª’ä½“æ–‡ä»¶ä¸‹è½½æ¥å£æ‹‰å–æ•°æ®ã€‚
 	private String ThumbMediaId;
-	//ÏûÏ¢id£¬64Î»ÕûĞÍ
+	//æ¶ˆæ¯idï¼Œ64ä½æ•´å‹
 	private String MsgId;
 	public String getMediaId() {
 		return MediaId;

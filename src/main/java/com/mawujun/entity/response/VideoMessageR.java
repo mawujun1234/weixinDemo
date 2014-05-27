@@ -7,11 +7,11 @@ public class VideoMessageR extends BaseMessage {
 	
 	private String MsgType=MessageUtil.RESP_MESSAGE_TYPE_VIDEO;
 
-	//Í¨¹ıÉÏ´«¶àÃ½ÌåÎÄ¼ş£¬µÃµ½µÄid
+	//é€šè¿‡ä¸Šä¼ å¤šåª’ä½“æ–‡ä»¶ï¼Œå¾—åˆ°çš„id
 	private String MediaId;
-	//ÊÓÆµÏûÏ¢µÄ±êÌâ
+	//è§†é¢‘æ¶ˆæ¯çš„æ ‡é¢˜
 	private String Title;
-	//ÊÓÆµÏûÏ¢µÄÃèÊö
+	//è§†é¢‘æ¶ˆæ¯çš„æè¿°
 	private String Descriptions;
 	public String getMediaId() {
 		return MediaId;
