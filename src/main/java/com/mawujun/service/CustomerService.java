@@ -108,7 +108,7 @@ public class CustomerService {
 
 		if(!ProviderService.checkProviderExists()){
 			StringBuffer contentMsg = new StringBuffer();
-			contentMsg.append("您好，非常抱歉,系统中暂时没有商户提供代驾信息。").append("\n");
+			contentMsg.append("您好，非常抱歉,系统中暂时没有商户提供代驾服务。").append("\n");
 			textMessage.setContent(contentMsg.toString());
 			return textMessage;
 		} else {

@@ -85,29 +85,10 @@ public class CoreService {
 				
 				//处理客户发送的代驾时的位置信息
 				respMessage = MessageUtil.messageToXml(CustomerService.send_location(requestMap));
-			} else if (msgType.equalsIgnoreCase(MessageUtil.EVENT_TYPE_LOCATION)) {
-				//自动发送的地理消息
-//				String latitude=requestMap.get("Latitude");
-//				String longitude=requestMap.get("Longitude");
-//				String precision=requestMap.get("Precision");
-//				
-//				// 默认回复此文本消息
-//				TextMessageR textMessage = new TextMessageR();
-//				textMessage.setToUserName(fromUserName);
-//				textMessage.setFromUserName(toUserName);
-//				textMessage.setCreateTime(new Date().getTime());
-//				textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
-//				textMessage.setFuncFlag(0);
-//				textMessage.setContent("你所在的位置是:"+latitude+":"+longitude);
-//				
-//				respMessage = MessageUtil.messageToXml(textMessage);
-				
-				//处理客户发送的代驾时的位置信息
-				respMessage = MessageUtil.messageToXml(CustomerService.send_location(requestMap));
-				
-			} else if (msgType.equalsIgnoreCase(MessageUtil.EVENT_TYPE_CLICK)) {
-				String EventKey=requestMap.get("EventKey");
-				if("CLICK".equals(requestMap.get("Event"))){
+			}  else if (msgType.equalsIgnoreCase(MessageUtil.REQ_MESSAGE_TYPE_EVENT)) {
+				String Event=requestMap.get("Event");
+				if(MessageUtil.EVENT_TYPE_CLICK.equals(Event)){
+					String EventKey=requestMap.get("EventKey");
 					if("help".equals(EventKey)){			
 						respMessage = MessageUtil.messageToXml(CommonService.help(requestMap));
 					} else if("ready_driver".equals(EventKey)){
@@ -115,6 +96,26 @@ public class CoreService {
 					} else if("find_driver".equals(EventKey)){
 						respMessage = MessageUtil.messageToXml(CustomerService.find_driver(requestMap));
 					}
+				} else if (MessageUtil.EVENT_TYPE_LOCATION.equals(Event)) {
+//					//自动发送的地理消息,每隔5秒发送的地理消息
+//					
+//					String latitude=requestMap.get("Latitude");
+//					String longitude=requestMap.get("Longitude");
+//					String precision=requestMap.get("Precision");
+//					
+//					// 默认回复此文本消息
+//					TextMessageR textMessage = new TextMessageR();
+//					textMessage.setToUserName(fromUserName);
+//					textMessage.setFromUserName(toUserName);
+//					textMessage.setCreateTime(new Date().getTime());
+//					textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+//					textMessage.setFuncFlag(0);
+//					textMessage.setContent("你所在的位置是:"+latitude+":"+longitude);
+//					
+//					respMessage = MessageUtil.messageToXml(textMessage);
+					
+					
+					
 				}
 			}else {
 				respMessage = MessageUtil.messageToXml(CommonService.help(requestMap));

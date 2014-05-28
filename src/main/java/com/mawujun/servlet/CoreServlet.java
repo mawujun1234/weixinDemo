@@ -14,8 +14,6 @@ import com.mawujun.utils.SignUtil;
 /**
  * 核心请求处理类
  * 
- * @author liufeng
- * @date 2013-05-18
  */
 public class CoreServlet extends HttpServlet {
 	private static final long serialVersionUID = 4440739483644821986L;
@@ -24,6 +22,8 @@ public class CoreServlet extends HttpServlet {
 	 * 确认请求来自微信服务器
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//request.setCharacterEncoding("UTF-8");
+		//response.setCharacterEncoding("UTF-8");
 		// 微信加密签名
 		String signature = request.getParameter("signature");
 		// 时间戳
@@ -50,8 +50,8 @@ public class CoreServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 				
 		// 将请求、响应的编码均设置为UTF-8（防止中文乱码）
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
+		//response.setCharacterEncoding("UTF-8");
 		// 微信加密签名
 		String signature = request.getParameter("signature");
 		// 时间戳

@@ -60,36 +60,32 @@ public class ClientService {
 		// 发送方帐号（open_id）
 		String fromUserName = requestMap.get("FromUserName");
 		// 公众帐号
-		String toUserName = requestMap.get("ToUserName");
+		//String toUserName = requestMap.get("ToUserName");
 		// 消息类型
 		String msgType = requestMap.get("MsgType");
-		//如果是语音消息，就把语音发送给商户
-		if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)) {
-			VoiceMsg voiceMessage=new VoiceMsg();
-			Voice voice=new Voice();
-			voice.setMedia_id(requestMap.get("MediaId"));
-			voiceMessage.setTouser(toUserName);
-			voiceMessage.setVoice(voice);
-			//发送客服消息
-			ClientService.sendMsg(voiceMessage);
-			
-			
-			//return voiceMessage;
-			
-		} else if (msgType.equalsIgnoreCase(MessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {
-			//如果是位置信息的时候,就发送位置信息给商户，需要先把
-			TextMsg msg=new TextMsg();
-			msg.setTouser(toUserName);
-			msg.setContent("客户所在的位置是:"+requestMap.get("Label")+".\n 请开始抢单");
-			
-			//发送客服消息
-			ClientService.sendMsg(msg);
-						
-		}
-		
-		//发送抢单的消息
 		for(Entry<String,OpenIDInfo> entry:ProviderService.getProviders().entrySet()){
-			//OpenIDInfo providerInfo=entry.getValue()
+			//如果是语音消息，就把语音发送给商户
+			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)) {
+				VoiceMsg voiceMessage=new VoiceMsg();
+				Voice voice=new Voice();
+				voice.setMedia_id(requestMap.get("MediaId"));
+				voiceMessage.setTouser(entry.getKey());
+				voiceMessage.setVoice(voice);
+				//发送客服消息
+				ClientService.sendMsg(voiceMessage);
+				
+			} else if (msgType.equalsIgnoreCase(MessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {
+				//如果是位置信息的时候,就发送位置信息给商户，需要先把
+				TextMsg msg=new TextMsg();
+				msg.setTouser(entry.getKey());
+				msg.setContent("客户所在的位置是:"+requestMap.get("Label")+".\n 请开始抢单");
+				
+				//发送客服消息
+				ClientService.sendMsg(msg);
+							
+			}
+		
+			//发送抢单的消息
 			sendRobBillMsg2Provider(entry.getKey(),fromUserName);
 		}
 		
