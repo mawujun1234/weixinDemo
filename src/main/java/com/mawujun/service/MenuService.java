@@ -1,36 +1,18 @@
 package com.mawujun.service;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.naming.CommunicationException;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.mawujun.entity.menu.AbstractButton;
 import com.mawujun.entity.menu.AccessToken;
 import com.mawujun.entity.menu.ClickButton;
 import com.mawujun.entity.menu.ComplexButton;
 import com.mawujun.entity.menu.Menu;
 import com.mawujun.entity.menu.ViewButton;
 import com.mawujun.utils.CommonUtil;
-import com.mawujun.utils.MyX509TrustManager;
 
 public class MenuService {
 	
 	public static void main(String[] arg) throws Exception{
-		AccessToken token=CommonUtil.getAccessToken("wxc57f66afafe529c2", "6c30ac43688a408bd77d1ee5d4c37a43");
+		AccessToken token=CommonUtil.getAccessToken();
 		boolean bool=MenuService.createMenu(token.getAccess_token());
 		if(bool){
 			System.out.println("创建菜单成功");
@@ -49,7 +31,7 @@ public class MenuService {
 		customer.addSub_button(find_driver);
 		
 		ViewButton provider_info=new ViewButton();
-		provider_info.setUrl("http://www.163.com");
+		provider_info.setUrl("http://mawujun1234.duapp.com/find_provider.html");
 		provider_info.setName("查找商户信息");
 		customer.addSub_button(provider_info);
 		
@@ -62,7 +44,7 @@ public class MenuService {
 		provider.addSub_button(ready_driver);
 		
 		ViewButton provider_update_info=new ViewButton();
-		provider_update_info.setUrl("http://www.163.com");
+		provider_update_info.setUrl("http://mawujun1234.duapp.com/update_provider.html");
 		provider_update_info.setName("修改信息");
 		provider.addSub_button(provider_update_info);
 		

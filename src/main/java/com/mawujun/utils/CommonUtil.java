@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -19,6 +20,9 @@ import com.mawujun.entity.menu.AccessToken;
 import net.sf.json.JSONObject;
 
 public class CommonUtil {
+	static String  APPID="wxc57f66afafe529c2";
+	static String  APPSECRET="6c30ac43688a408bd77d1ee5d4c37a43";
+	private static AccessToken accessToken;
 	/**
 	 * access_token是公众号的全局唯一票据，公众号调用各接口时都需使用access_token。正常情况下access_token有效期为7200秒，重复获取将导致上次获取的access_token失效。由于获取access_token的api调用次数非常有限，建议开发者全局存储与更新access_token，频繁刷新access_token会导致api调用受限，影响自身业务。
 
@@ -28,7 +32,7 @@ public class CommonUtil {
 	 * @return
 	 * @throws IOException 
 	 */
-	public static AccessToken getAccessToken(String APPID,String APPSECRET) throws Exception{
+	public static AccessToken getAccessToken() throws Exception{
 //		String access_token_url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 //		URL url=new URL(access_token_url);
 //		HttpsURLConnection conn=(HttpsURLConnection)url.openConnection();
@@ -58,19 +62,33 @@ public class CommonUtil {
 //		
 //		JSONObject json=JSONObject.fromObject(buffer.toString());
 		
+		if(accessToken!=null && !accessToken.isExpires()){
+			return accessToken;
+		}
+		
 		String access_token_url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 		access_token_url=access_token_url.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
 		JSONObject json=httpsRequest(access_token_url,"GET",null);
 		if(json==null){
 			return null;
 		}
-		return (AccessToken)JSONObject.toBean(json, AccessToken.class);
+		accessToken= (AccessToken)JSONObject.toBean(json, AccessToken.class);
+		accessToken.setCreateDate(new Date());
+		return accessToken;
 		
 		//String accessToken=json.getString("access_token");
 		//return accessToken;
 		
 	}
-	
+	/**
+	 * 
+	 * @author mawujun email:160649888@163.com qq:16064988
+	 * @param requestUrl 发送的url
+	 * @param requestMethod 方法
+	 * @param outpuStr 发送的消息
+	 * @return
+	 * @throws Exception
+	 */
 	public static JSONObject httpsRequest(String requestUrl,String requestMethod,String outpuStr) throws Exception{
 		//String access_token_url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 		URL url=new URL(requestUrl);

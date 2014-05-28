@@ -48,68 +48,95 @@ public class CoreService {
 
 			// 文本消息
 			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
+				String Content=requestMap.get("Content");
+				//当用户直接发送了位置信息或语音信息的时候，然后客户返回"Y"，确认要进行代驾的时候
+				if("Y".equalsIgnoreCase(Content)){
+					respMessage = MessageUtil.messageToXml(CustomerService.accept_Y(requestMap));
+				}
 //				
 			} else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_VOICE)) {
-				com.mawujun.entity.response.VoiceMessageR voiceMessage=new com.mawujun.entity.response.VoiceMessageR();
-				voiceMessage.setToUserName(fromUserName);
-				voiceMessage.setFromUserName(toUserName);
-				voiceMessage.setCreateTime(new Date());
-				voiceMessage.setVoice(new Voice(requestMap.get("MediaId")));
+//				com.mawujun.entity.response.VoiceMessageR voiceMessage=new com.mawujun.entity.response.VoiceMessageR();
+//				voiceMessage.setToUserName(fromUserName);
+//				voiceMessage.setFromUserName(toUserName);
+//				voiceMessage.setCreateTime(new Date());
+//				voiceMessage.setVoice(new Voice(requestMap.get("MediaId")));
+//				
+//				respMessage = MessageUtil.messageToXml(voiceMessage);
+				//处理客户发送的代驾时的位置信息
+				respMessage = MessageUtil.messageToXml(CustomerService.send_location(requestMap));
 				
-				respMessage = MessageUtil.messageToXml(voiceMessage);
 			}  else if (msgType.equalsIgnoreCase(MessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {
-				String eventType=requestMap.get("Event");
-				//if(eventType.equals(MessageUtil.EVENT_TYPE_LOCATION)) {
-					String latitude=requestMap.get("Location_X");
-					String longitude=requestMap.get("Location_Y");
-					String Label=requestMap.get("Label");
-					
-					// 默认回复此文本消息
-					TextMessageR textMessage = new TextMessageR();
-					textMessage.setToUserName(fromUserName);
-					textMessage.setFromUserName(toUserName);
-					textMessage.setCreateTime(new Date().getTime());
-					textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
-					textMessage.setFuncFlag(0);
-					textMessage.setContent("你所在的位置是:"+Label+":"+latitude+":"+longitude);
-					
-					respMessage = MessageUtil.messageToXml(textMessage);
-				//}
-			} else if (msgType.equalsIgnoreCase(MessageUtil.EVENT_TYPE_LOCATION)) {
-				String latitude=requestMap.get("Latitude");
-				String longitude=requestMap.get("Longitude");
-				String precision=requestMap.get("Precision");
-				
-				// 默认回复此文本消息
-				TextMessageR textMessage = new TextMessageR();
-				textMessage.setToUserName(fromUserName);
-				textMessage.setFromUserName(toUserName);
-				textMessage.setCreateTime(new Date().getTime());
-				textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
-				textMessage.setFuncFlag(0);
-				textMessage.setContent("你所在的位置是:"+latitude+":"+longitude);
-				
-				respMessage = MessageUtil.messageToXml(textMessage);
-			} else {
-				// 默认回复此文本消息
-				TextMessageR textMessage = new TextMessageR();
-				textMessage.setToUserName(fromUserName);
-				textMessage.setFromUserName(toUserName);
-				textMessage.setCreateTime(new Date().getTime());
-				textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
-				textMessage.setFuncFlag(0);
-				// 由于href属性值必须用双引号引起，这与字符串本身的双引号冲突，所以要转义			
-				StringBuffer contentMsg = new StringBuffer();  
-				contentMsg.append("欢迎访问<a href=\"http://chatcourse.duapp.com\">个人主页</a>").append("\n");  
-				contentMsg.append("您好，我是机器人小Q，请回复数字选择服务：").append("\n\n");  
-				contentMsg.append("1  代驾").append("\n");  
-				contentMsg.append("2  商户信息查询").append("\n");  
-				contentMsg.append("3  商户登录").append("\n");  
-				contentMsg.append("4  代驾登录").append("\n");  
+//				String eventType=requestMap.get("Event");
+//					String latitude=requestMap.get("Location_X");
+//					String longitude=requestMap.get("Location_Y");
+//					String Label=requestMap.get("Label");
+//					
+//					// 默认回复此文本消息
+//					TextMessageR textMessage = new TextMessageR();
+//					textMessage.setToUserName(fromUserName);
+//					textMessage.setFromUserName(toUserName);
+//					textMessage.setCreateTime(new Date().getTime());
+//					textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+//					textMessage.setFuncFlag(0);
+//					textMessage.setContent("你所在的位置是:"+Label+":"+latitude+":"+longitude);
+//					
+//					respMessage = MessageUtil.messageToXml(textMessage);
 
-				textMessage.setContent(contentMsg.toString());
-				// 将文本消息对象转换成xml字符串
-				respMessage = MessageUtil.messageToXml(textMessage);
+				
+				//处理客户发送的代驾时的位置信息
+				respMessage = MessageUtil.messageToXml(CustomerService.send_location(requestMap));
+			} else if (msgType.equalsIgnoreCase(MessageUtil.EVENT_TYPE_LOCATION)) {
+				//自动发送的地理消息
+//				String latitude=requestMap.get("Latitude");
+//				String longitude=requestMap.get("Longitude");
+//				String precision=requestMap.get("Precision");
+//				
+//				// 默认回复此文本消息
+//				TextMessageR textMessage = new TextMessageR();
+//				textMessage.setToUserName(fromUserName);
+//				textMessage.setFromUserName(toUserName);
+//				textMessage.setCreateTime(new Date().getTime());
+//				textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+//				textMessage.setFuncFlag(0);
+//				textMessage.setContent("你所在的位置是:"+latitude+":"+longitude);
+//				
+//				respMessage = MessageUtil.messageToXml(textMessage);
+				
+				//处理客户发送的代驾时的位置信息
+				respMessage = MessageUtil.messageToXml(CustomerService.send_location(requestMap));
+				
+			} else if (msgType.equalsIgnoreCase(MessageUtil.EVENT_TYPE_CLICK)) {
+				String EventKey=requestMap.get("EventKey");
+				if("CLICK".equals(requestMap.get("Event"))){
+					if("help".equals(EventKey)){			
+						respMessage = MessageUtil.messageToXml(CommonService.help(requestMap));
+					} else if("ready_driver".equals(EventKey)){
+						respMessage = MessageUtil.messageToXml(ProviderService.ready_driver(requestMap));
+					} else if("find_driver".equals(EventKey)){
+						respMessage = MessageUtil.messageToXml(CustomerService.find_driver(requestMap));
+					}
+				}
+			}else {
+				respMessage = MessageUtil.messageToXml(CommonService.help(requestMap));
+//				// 默认回复此文本消息
+//				TextMessageR textMessage = new TextMessageR();
+//				textMessage.setToUserName(fromUserName);
+//				textMessage.setFromUserName(toUserName);
+//				textMessage.setCreateTime(new Date().getTime());
+//				textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+//				textMessage.setFuncFlag(0);
+//				// 由于href属性值必须用双引号引起，这与字符串本身的双引号冲突，所以要转义			
+//				StringBuffer contentMsg = new StringBuffer();  
+//				contentMsg.append("欢迎访问<a href=\"http://chatcourse.duapp.com\">个人主页</a>").append("\n");  
+//				contentMsg.append("您好，我是机器人小Q，请回复数字选择服务：").append("\n\n");  
+//				contentMsg.append("1  代驾").append("\n");  
+//				contentMsg.append("2  商户信息查询").append("\n");  
+//				contentMsg.append("3  商户登录").append("\n");  
+//				contentMsg.append("4  代驾登录").append("\n");  
+//
+//				textMessage.setContent(contentMsg.toString());
+//				// 将文本消息对象转换成xml字符串
+//				respMessage = MessageUtil.messageToXml(textMessage);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
