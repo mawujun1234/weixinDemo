@@ -28,7 +28,7 @@ public class CommonService {
 		contentMsg.append("1  首先商户(假设已经注册)登录公众号，准备接收代驾信息").append("\n");  
 		contentMsg.append("2  客户点‘寻求代驾’,然后输入位置,或者发送语音").append("\n");  
 		contentMsg.append("3 商户接收信息，并抢单，抢单成功，把商户信息发送给客户，这都是模拟的").append("\n");  
-		contentMsg.append("4 客户接收信息,并等待或根据发过来的信息，联系商户 ").append("\n");  
+		contentMsg.append("4 客户接收信息,等待或根据发过来的信息，联系商户 ").append("\n");  
 
 		textMessage.setContent(contentMsg.toString());
 		

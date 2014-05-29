@@ -25,7 +25,7 @@ public class ClientService {
 		try {
 		AccessToken accessToken=CommonUtil.getAccessToken();
 		String ACCESS_TOKEN=accessToken.getAccess_token();
-		
+		msg.setAccess_token(ACCESS_TOKEN);
 		
 		String menuCreateUrl=url.replace("ACCESS_TOKEN", ACCESS_TOKEN);
 		
@@ -72,21 +72,23 @@ public class ClientService {
 				voiceMessage.setTouser(entry.getKey());
 				voiceMessage.setVoice(voice);
 				//发送客服消息
-				ClientServiceTest.sendMsg(voiceMessage);
+				ClientService.sendMsg(voiceMessage);
+				//发送抢单的消息
+				sendRobBillMsg2Provider(entry.getKey(),fromUserName);
 				
 			} else if (msgType.equalsIgnoreCase(MessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {
 				//如果是位置信息的时候,就发送位置信息给商户，需要先把
 				TextMsg msg=new TextMsg();
 				msg.setTouser(entry.getKey());
-				msg.setContent("客户所在的位置是:"+requestMap.get("Label")+".\n 请开始抢单");
+				msg.setText("客户所在的位置是:"+requestMap.get("Label")+".\n 请开始抢单。\n"+
+						"请点击\"<a href=\"http://mawujun1234.duapp.com/ProviderServlet?providerId="+entry.getKey()+"&customerId="+fromUserName+"\">抢单</a>\"进行抢单!");
 				
 				//发送客服消息
-				ClientServiceTest.sendMsg(msg);
+				ClientService.sendMsg(msg);
 							
 			}
 		
-			//发送抢单的消息
-			sendRobBillMsg2Provider(entry.getKey(),fromUserName);
+			
 		}
 		
 		
@@ -102,10 +104,10 @@ public class ClientService {
 		msg.setTouser(providerId);
 		
 		//这里看看能不能模拟微信的请求，提交到微信端，这样就可以在微信的平台进行抢了
-		msg.setContent("请点击\"<a href=\"/ProviderServlet?providerId="+providerId+"&customerId="+customerId+"\">抢单</>\"进行抢单!");
+		msg.setText("请点击\"<a href=\"http://mawujun1234.duapp.com/ProviderServlet?providerId="+providerId+"&customerId="+customerId+"\">抢单</a>\"进行抢单!");
 		
 		//发送客服消息
-		ClientServiceTest.sendMsg(msg);
+		ClientService.sendMsg(msg);
 	}
 	
 	/**
@@ -113,18 +115,18 @@ public class ClientService {
 	 * @author mawujun email:160649888@163.com qq:16064988
 	 * @param openid 客户的, 
 	 */
-	public static void sendProviderIinfo2CustomerAndProvider(String providerId,String customerId){
+	public static void sendProviderSuccessInfo2CustomerAndProvider(String providerId,String customerId){
 		TextMsg msg=new TextMsg();
 		msg.setTouser(customerId);
-		msg.setContent("XXX将为您服务，电话:000000000000");
+		msg.setText("XXX将为您服务，电话:000000000000");
 		//发送客服消息
-		ClientServiceTest.sendMsg(msg);
+		ClientService.sendMsg(msg);
 		
 		
 		TextMsg msg1=new TextMsg();
 		msg1.setTouser(providerId);
-		msg1.setContent("您已经抢到订单:XXXXX");
+		msg1.setText("您已经抢到订单:XXXXX");
 		//发送客服消息
-		ClientServiceTest.sendMsg(msg1);
+		ClientService.sendMsg(msg1);
 	}
 }

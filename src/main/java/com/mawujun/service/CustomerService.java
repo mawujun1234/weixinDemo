@@ -144,12 +144,23 @@ public class CustomerService {
 			textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
 			textMessage.setFuncFlag(0);
 			
-			StringBuffer contentMsg = new StringBuffer();
-			contentMsg.append("您好，您的代驾请求，已经发送给代驾商户，请等候!。").append("\n");
-			textMessage.setContent(contentMsg.toString());
+			if(!ProviderService.checkProviderExists()){
+				StringBuffer contentMsg = new StringBuffer();
+				contentMsg.append("您好，非常抱歉,系统中暂时没有商户提供代驾服务。").append("\n");
+				textMessage.setContent(contentMsg.toString());
+			} else {
+				StringBuffer contentMsg = new StringBuffer();
+				contentMsg.append("您好，您的代驾请求，已经发送给代驾商户，请等候!。").append("\n");
+				textMessage.setContent(contentMsg.toString());
+				
+				//这里发送代驾信息
+				ClientService.sendClientMsg2Provider(requestMap);	
+				//登记客户信息
+				addOpenIDInfo(fromUserName);
+			}
 			
-			//这里发送代驾信息
-			ClientService.sendClientMsg2Provider(requestMap);
+			
+		
 			
 			temp_location.remove(fromUserName);
 			return textMessage;
