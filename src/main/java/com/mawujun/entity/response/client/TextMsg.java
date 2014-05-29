@@ -19,7 +19,7 @@ public class TextMsg extends BaseMsg {
 		return msgtype;
 	}
 
-	public void setMsgtype(String msgtype) {
-		this.msgtype = msgtype;
-	}
+//	public void setMsgtype(String msgtype) {
+//		this.msgtype = msgtype;
+//	}
 }

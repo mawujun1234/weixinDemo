@@ -72,7 +72,7 @@ public class ClientService {
 				voiceMessage.setTouser(entry.getKey());
 				voiceMessage.setVoice(voice);
 				//发送客服消息
-				ClientService.sendMsg(voiceMessage);
+				ClientServiceTest.sendMsg(voiceMessage);
 				
 			} else if (msgType.equalsIgnoreCase(MessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {
 				//如果是位置信息的时候,就发送位置信息给商户，需要先把
@@ -81,7 +81,7 @@ public class ClientService {
 				msg.setContent("客户所在的位置是:"+requestMap.get("Label")+".\n 请开始抢单");
 				
 				//发送客服消息
-				ClientService.sendMsg(msg);
+				ClientServiceTest.sendMsg(msg);
 							
 			}
 		
@@ -105,7 +105,7 @@ public class ClientService {
 		msg.setContent("请点击\"<a href=\"/ProviderServlet?providerId="+providerId+"&customerId="+customerId+"\">抢单</>\"进行抢单!");
 		
 		//发送客服消息
-		ClientService.sendMsg(msg);
+		ClientServiceTest.sendMsg(msg);
 	}
 	
 	/**
@@ -118,13 +118,13 @@ public class ClientService {
 		msg.setTouser(customerId);
 		msg.setContent("XXX将为您服务，电话:000000000000");
 		//发送客服消息
-		ClientService.sendMsg(msg);
+		ClientServiceTest.sendMsg(msg);
 		
 		
 		TextMsg msg1=new TextMsg();
 		msg1.setTouser(providerId);
 		msg1.setContent("您已经抢到订单:XXXXX");
 		//发送客服消息
-		ClientService.sendMsg(msg1);
+		ClientServiceTest.sendMsg(msg1);
 	}
 }

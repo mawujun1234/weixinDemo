@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mawujun.service.ClientService;
+import com.mawujun.service.ClientServiceTest;
 import com.mawujun.service.CoreService;
 import com.mawujun.utils.SignUtil;
 
